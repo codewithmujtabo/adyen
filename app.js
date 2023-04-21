@@ -1,24 +1,26 @@
 const panelsEl = document.querySelectorAll(".panel");
 const arrowEl = document.querySelectorAll(".arrow");
 
-let currentIndex = -1;
+if (document.documentElement.clientWidth > 1295) {
+  let currentIndex = -1;
 
-for (let i = 0; i < arrowEl.length; i++) {
-  arrowEl[i].addEventListener("click", () => {
-    if (currentIndex !== i) {
-      if (currentIndex !== -1) {
-        panelsEl[currentIndex].toggleAttribute("hidden");
-        arrowEl[currentIndex].classList.toggle("rotate");
+  for (let i = 0; i < arrowEl.length; i++) {
+    arrowEl[i].addEventListener("click", () => {
+      if (currentIndex !== i) {
+        if (currentIndex !== -1) {
+          panelsEl[currentIndex].toggleAttribute("hidden");
+          arrowEl[currentIndex].classList.toggle("rotate");
+        }
+        panelsEl[i].toggleAttribute("hidden");
+        arrowEl[i].classList.toggle("rotate");
+        currentIndex = i;
+      } else {
+        panelsEl[i].toggleAttribute("hidden");
+        arrowEl[i].classList.toggle("rotate");
+        currentIndex = -1;
       }
-      panelsEl[i].toggleAttribute("hidden");
-      arrowEl[i].classList.toggle("rotate");
-      currentIndex = i;
-    } else {
-      panelsEl[i].toggleAttribute("hidden");
-      arrowEl[i].classList.toggle("rotate");
-      currentIndex = -1;
-    }
-  });
+    });
+  }
 }
 
 window.onload = function () {
@@ -49,3 +51,29 @@ langEl.addEventListener("click", () => {
   dropDownEl.style.display = "";
   dropDownIconEl.classList.toggle("rotate");
 });
+
+const barsIconEl = document.querySelector(".fa-bars");
+const closeBarsEl = document.querySelector(".fa-xmark");
+const barsEl = document.querySelector(".nav-elements ul");
+const panelEl = document.querySelectorAll(".panel-elements");
+const hidePanelEl = document.querySelector(".panel-elements h1");
+
+barsIconEl.addEventListener("click", () => {
+  barsEl.style.right = "0";
+  closeBarsEl.style.display = "block";
+});
+
+closeBarsEl.addEventListener("click", () => {
+  barsEl.style.right = "-440px";
+  panelsEl.forEach((panel) => {
+    if (!panel.hasAttribute("hidden")) {
+      panel.toggleAttribute("hidden");
+    }
+  });
+  arrowEl.forEach((arrow) => {
+    if (arrow.classList.contains("rotate")) {
+      arrow.classList.toggle("rotate");
+    }
+  });
+});
+

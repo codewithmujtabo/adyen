@@ -57,23 +57,16 @@ p {
 
 .nav-elements ul {
   display: flex;
+  align-items: center;
 }
 
 .nav-elements ul li {
-  margin-left: 40px;
+  margin-left: 30px;
   cursor: pointer;
 }
 
-.nav-contacts p,
-.nav-contacts button {
-  margin-left: 20px;
-}
-
-.nav-contacts {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 20px;
+.nav-elements ul li:nth-child(7) {
+  margin-left: 90px;
 }
 
 .btn {
@@ -95,6 +88,89 @@ p {
   background-color: #037a33;
 }
 
+.search {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.search span {
+  display: none;
+}
+
+.fa-solid {
+  font-size: 30px;
+  float: right;
+  line-height: 80px;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 1295px) {
+  .fa-bars {
+    display: block;
+  }
+
+  .fa-xmark {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+  }
+
+  .nav {
+    position: relative;
+    /* z-index: 1; */
+  }
+
+  .nav-elements ul {
+    position: fixed;
+    display: block;
+    right: -440px;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    width: 420px;
+    box-shadow: -12px 24px 24px 0 #00112c1a;
+    padding-top: 124px;
+    background-color: #f7f8f9;
+    margin-top: 0;
+    transition: all 0.3s linear;
+    z-index: 0;
+  }
+
+  .nav-elements ul li {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+
+  .nav-elements ul li svg {
+    transform: rotate(-90deg);
+    margin-right: 40px;
+  }
+
+  .nav-elements .search-icon {
+    transform: rotate(0deg);
+    margin-right: 5px;
+  }
+
+  .nav-elements ul li:nth-child(7) {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 90px;
+    margin-left: 21px;
+  }
+
+  .search span {
+    display: block;
+  }
+
+  .nav-elements .btn {
+    padding: 18px 118px;
+  }
+}
 
 .panel-elements {
   display: flex;
@@ -125,6 +201,10 @@ p {
   font-weight: 700;
   letter-spacing: -0.015em;
   line-height: 42px;
+}
+
+.panel-elements h1 svg {
+  display: none;
 }
 
 .panel-elements h2 {
@@ -172,11 +252,58 @@ p {
 .icon {
   flex: none;
   margin-left: 5px;
-  transition: transform .15s;}
+  transition: transform 0.15s;
+}
 
 .rotate .icon {
   transform: rotate(180deg);
   transition: all 0.3s;
+}
+
+@media (max-width: 1295px) {
+  .panel-elements {
+    display: block;
+    width: 420px;
+    background-color: #f7f8f9;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 0;
+    /* width: 100%; */
+    z-index: 1;
+    margin-top: 72px;
+    transition: all 0.3s linear;
+  }
+
+  .panel-elements div:first-child {
+    padding: 24px;
+    width: 100%;
+    background-color: #f7f8f9;
+  }
+
+  .panel-elements div:not(:first-child) {
+    width: 100%;
+    background-color: #f7f8f9;
+    padding: 24px;
+  }
+
+  .panel-elements div:not(:last-child) {
+    width: 100%;
+    background-color: #f7f8f9;
+    padding: 24px;
+  }
+
+  .panel-elements h1 {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  .panel-elements h1 svg {
+    display: block;
+    margin-right: 10px;
+  }
 }
 
 /* MAIN  */
@@ -184,8 +311,8 @@ p {
 .main {
   display: flex;
   align-items: center;
-  height: 100vh;
   justify-content: space-between;
+  padding: 96px 0 24px 0;
 }
 
 .left-main {
@@ -229,6 +356,32 @@ p {
   width: 160px;
 }
 
+@media (max-width: 768px) {
+  .main {
+    display: block;
+  }
+
+  .left-main {
+    margin: 0;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .right-main video {
+    width: 100%;
+    height: auto;
+  }
+
+  .sponsors {
+    gap: 30px;
+  }
+
+  .sponsors-logo {
+    height: 22px;
+    width: 50px;
+  }
+}
+
 /* SECTION-1 */
 .section-1 {
   padding: 96px 0;
@@ -246,6 +399,7 @@ p {
 .section-1-elements {
   display: flex;
   justify-content: space-between;
+  flex-flow: wrap;
 }
 
 .section-1-element {
@@ -270,10 +424,26 @@ p {
 .section-1-element a {
   text-decoration: underline;
   transition: all 0.3s;
+  text-underline-offset: 5px;
 }
 
 .section-1-element a:hover {
   color: #0abf53;
+}
+
+@media (max-width: 768px) {
+  .section-1 h2 {
+    max-width: 100%;
+  }
+
+  .section-1-elements {
+    display: block;
+  }
+
+  .section-1-element {
+    width: 100%;
+    margin-bottom: 40px;
+  }
 }
 
 /* SECTION-2  */
@@ -350,13 +520,38 @@ p {
   margin-top: 15px;
 }
 
+@media (max-width: 768px) {
+  .section-2 {
+    display: block;
+    padding: 24px 0;
+  }
+
+  .section-2-video {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .section-2-video video {
+    width: 100%;
+    height: auto;
+    padding: 0;
+  }
+
+  .section-2-info {
+    width: 100%;
+    margin: 0;
+  }
+}
+
 /* SECTION-3  */
 
 .section-3 {
   padding: 96px 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .section-3 span {
@@ -372,13 +567,7 @@ p {
   margin-bottom: 24px;
 }
 
-.section-3-elements {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.section-3-elements h3 {
+.section-3-info h3 {
   font-size: 32px;
   font-weight: 700;
   letter-spacing: -0.015em;
@@ -387,7 +576,7 @@ p {
   text-align: center;
 }
 
-.section-3-elements p {
+.section-3-info p {
   font-size: 20px;
   font-weight: 400;
   line-height: 30px;
@@ -395,21 +584,27 @@ p {
   margin-bottom: 12px;
 }
 
-.section-3-elements p a {
+.section-3-info p a {
   text-decoration: underline;
   transition: all 0.3s;
 }
 
-.section-3-elements p a:hover {
+.section-3-info p a:hover {
   color: #0abf53;
 }
 
-.section-3-elements picture {
-  height: 675px;
+.section-3 picture img {
+  height: auto;
   width: 100%;
   margin-top: 36px;
   border-radius: 12px;
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .section-3 {
+    padding: 48px 0;
+  }
 }
 
 /* SECTION-4   */
@@ -419,12 +614,12 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
 .section-4-info {
   width: 50%;
-  margin-right: 170px;
+  /* margin-right: 170px; */
+  padding: 0 24px;
 }
 
 .section-4-info span {
@@ -475,9 +670,32 @@ p {
   color: #037a33;
 }
 
+.section-4-image {
+  width: 50%;
+  padding: 0 24px;
+}
+
 .section-4-image picture img {
   border-radius: 15px;
   overflow: hidden;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .section-4 {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .section-4-image {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .section-4-info {
+    width: 100%;
+  }
 }
 
 /* SECTION-5   */
@@ -499,7 +717,7 @@ p {
   font-weight: 400;
   line-height: 30px;
   margin-bottom: 12px;
-  width: 800px;
+  width: 100%;
 }
 
 .section-5-btns {
@@ -554,8 +772,30 @@ p {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .section-5-panel-elements {
+    flex-direction: column-reverse;
+    /* align-items: flex-start; */
+  }
+
+  /* .section-5-panel-image picture img {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }   */
+
+  .section-5-panel-info {
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .section-5-panel-info p {
+    width: 100%;
+  }
+}
+
 .section-5-panel-info p {
-  width: 480px;
+  width: 80%;
   margin-bottom: 40px;
 }
 
@@ -665,7 +905,6 @@ p {
   font-weight: 700;
   line-height: 26px;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0);
   height: 50px;
   padding: 7px 24px;
   position: relative;
@@ -675,7 +914,15 @@ p {
   justify-content: center;
   padding: 0;
   width: 50px;
+}
+
+.footer-elements-social a:not(:first-child) {
   margin-left: 20px;
+}
+
+.footer-elements-social a:hover {
+  background-color: #8f97a3;
+  color: #00112c;
 }
 
 .footer-elements-social a svg {
@@ -720,7 +967,17 @@ p {
   margin-right: 10px;
 }
 
-.ds-popover-container--dark {
+@media (max-width: 768px) {
+  .footer-elements {
+    display: block;
+  }
+
+  .footer-elements-table {
+    margin-bottom: 50px;
+  }
+}
+
+/* .ds-popover-container--dark {
   background-color: #102039;
   border-color: #404d61;
   color: #fff;
@@ -744,4 +1001,4 @@ p {
 
 .rotate .icon {
   transform: rotate(180deg);
-}
+} */
